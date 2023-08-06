@@ -5,7 +5,8 @@ import TrackPlayer, { AppKilledPlaybackBehavior, Capability, Event, State, usePl
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import theme from "../../global/styles/theme";
 import { getArtistInfo } from "../../hooks/spotify";
-import { Container, ContainerBackground, ContentBackground, ImageBorder, ImageLogo, ImageWrapper, MainContainer, MainWrapper, MusicControlsContainer, SongContentTextArtist, SongContentTextTitle, SongText } from "./styles";
+import { SlideShow } from "../SlideShow";
+import { Container, ContainerBackground, ContentBackground, ImageBorder, ImageLogo, ImageWrapper, MainContainer, MainWrapper, MusicControlsContainer, SongContentTextArtist, SongText } from "./styles";
 
 export function MusicPlayer() {
     
@@ -196,8 +197,14 @@ export function MusicPlayer() {
         };
     }, []);
 
-    const {width, height} = Dimensions.get('window');
     
+
+
+
+    const {width, height} = Dimensions.get('window');
+
+    const longText = "Texto muito grande que precisa deslizar automaticamente para que todo o conteúdo possa ser lido. Aqui você pode adicionar todo o conteúdo de texto que desejar.";
+
     return (
 
         <Container>
@@ -221,7 +228,7 @@ export function MusicPlayer() {
                 </MainWrapper>
                 
                 <SongText>
-                    <SongContentTextTitle>{trackTitle}</SongContentTextTitle>
+                    <SlideShow text={trackTitle} widthLimit={width} />
                     <SongContentTextArtist>{trackArtist}</SongContentTextArtist>
                 </SongText>
 
