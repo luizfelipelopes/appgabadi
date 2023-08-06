@@ -26,7 +26,7 @@ export const ContentBackground = styled.View`
     
     width: 100%;
     height: ${RFValue(300)}px;
-    background-color: rgba(0,0,0, 0.9); 
+    background-color: rgba(0,0,0, 0.85); 
 `;
 
 export const ImageLogo = styled(LogoSvg).attrs({
