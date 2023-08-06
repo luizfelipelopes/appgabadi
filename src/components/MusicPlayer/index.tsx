@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import { Dimensions, ImageBackground, TouchableOpacity } from "react-native";
+import { Dimensions, ImageBackground, ScrollView, Text, TouchableOpacity } from "react-native";
 import { RFValue } from "react-native-responsive-fontsize";
 import TrackPlayer, { AppKilledPlaybackBehavior, Capability, Event, State, usePlaybackState, useTrackPlayerEvents } from "react-native-track-player";
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import theme from "../../global/styles/theme";
 import { getArtistInfo } from "../../hooks/spotify";
 import { SlideShow } from "../SlideShow";
-import { Container, ContainerBackground, ContentBackground, ImageBorder, ImageLogo, ImageWrapper, MainContainer, MainWrapper, MusicControlsContainer, SongContentTextArtist, SongText } from "./styles";
+import { Container, ContainerBackground, ContentBackground, ImageBorder, ImageLogo, ImageWrapper, MainContainer, MainWrapper, MusicControlsContainer, SongContentTextArtist, SongContentTextTitle, SongText } from "./styles";
 
 export function MusicPlayer() {
     
@@ -16,6 +16,7 @@ export function MusicPlayer() {
     const [trackTitle, setTrackTitle] = useState('A Potência Gospel de Diamantina');
     const [trackArtist, setTrackArtist] = useState('Gabadi');
     const [trackArtwork, setTrackArtwork] = useState(thumbDefault);
+    const [textWidth, setTextWidth] = useState(0);
     
     const playBackState = usePlaybackState();
 
@@ -197,13 +198,16 @@ export function MusicPlayer() {
         };
     }, []);
 
-    
 
+    const marginSize = 40;
+    const { width } = Dimensions.get('window');
 
+    const handleTextLayout = (event) => {
+        
+        const textLayout = event.nativeEvent.layout;
+        setTextWidth(textLayout.width);
 
-    const {width, height} = Dimensions.get('window');
-
-    const longText = "Texto muito grande que precisa deslizar automaticamente para que todo o conteúdo possa ser lido. Aqui você pode adicionar todo o conteúdo de texto que desejar.";
+    };
 
     return (
 
@@ -228,7 +232,11 @@ export function MusicPlayer() {
                 </MainWrapper>
                 
                 <SongText>
-                    <SlideShow text={trackTitle} widthLimit={width} />
+                
+                    { textWidth >= width - marginSize
+                    ? <SlideShow text={trackTitle} widthLimit={width} />
+                    : <SongContentTextTitle>{trackTitle}</SongContentTextTitle>}
+                    
                     <SongContentTextArtist>{trackArtist}</SongContentTextArtist>
                 </SongText>
 
@@ -253,6 +261,10 @@ export function MusicPlayer() {
                 </MusicControlsContainer>
 
             </MainContainer>
+
+            <ScrollView style={{ position: 'absolute', bottom: 0 }} horizontal>
+                <Text onLayout={handleTextLayout}>{trackTitle}</Text>
+            </ScrollView>            
             
       </Container>
 

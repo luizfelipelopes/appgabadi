@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Dimensions } from "react-native";
-import Animated, { useAnimatedScrollHandler, useAnimatedStyle, useSharedValue, withSpring, withTiming } from "react-native-reanimated";
+import Animated, { useAnimatedStyle, useSharedValue, withSpring, withTiming } from "react-native-reanimated";
 import { Container, TextSlideShow } from "./styles";
 
 interface SlideShowProps {
@@ -17,7 +17,7 @@ export function SlideShow ({ text, widthLimit = width, slideInterval = 4000 }: S
     const scrollX = useSharedValue(0);
 
     const textFormatted = text.trim();
-  
+
     useEffect(() => {
         const scrollTimer = setInterval(() => {
 
@@ -34,10 +34,6 @@ export function SlideShow ({ text, widthLimit = width, slideInterval = 4000 }: S
         const textLayout = event.nativeEvent.layout;
         setTextWidth(textLayout.width);
     };
-
-    const scrollHandler = useAnimatedScrollHandler((event) => {
-        scrollX.value = event.contentOffset.x;
-    });
 
     const animatedStyle = useAnimatedStyle(() => {
         
@@ -66,23 +62,10 @@ export function SlideShow ({ text, widthLimit = width, slideInterval = 4000 }: S
     }
   
     return (
-        <Container
-            ref={scrollViewRef}
-            onScroll={scrollHandler}>
-
-            {textWidth >  widthLimit ?
-                
-                <Animated.View style={[{ flexDirection: 'row' }, animatedStyle]}>
-                    {iterationsText(120)}
-                </Animated.View> :
-
-                <TextSlideShow
-                    onLayout={handleTextLayout}>
-                    {textFormatted}
-                </TextSlideShow> 
-                
-            }
-            
+        <Container ref={scrollViewRef}>
+            <Animated.View style={[{ flexDirection: 'row' }, animatedStyle]}>
+                {iterationsText(220)}
+            </Animated.View> 
         </Container>
     );
   };
