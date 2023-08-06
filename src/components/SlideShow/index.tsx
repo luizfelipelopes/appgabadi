@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Dimensions, ScrollView, Text } from "react-native";
+import { Dimensions } from "react-native";
 import Animated, { useAnimatedScrollHandler, useAnimatedStyle, useSharedValue, withSpring, withTiming } from "react-native-reanimated";
 import { Container, TextSlideShow } from "./styles";
 
@@ -8,7 +8,7 @@ interface SlideShowProps {
     widthLimit?: number;
     slideInterval?: number;
 }
-const {width, height} = Dimensions.get('window');
+const { width } = Dimensions.get('window');
 
 export function SlideShow ({ text, widthLimit = width, slideInterval = 4000 }: SlideShowProps)  {
     
@@ -21,10 +21,7 @@ export function SlideShow ({ text, widthLimit = width, slideInterval = 4000 }: S
     useEffect(() => {
         const scrollTimer = setInterval(() => {
 
-            console.log('scrollTimer', textWidth, widthLimit)
-
             scrollX.value += widthLimit;
-
             scrollX.value = withSpring(scrollX.value, { damping: 1, stiffness: 0.1 })
         
         }, slideInterval);
@@ -71,12 +68,7 @@ export function SlideShow ({ text, widthLimit = width, slideInterval = 4000 }: S
     return (
         <Container
             ref={scrollViewRef}
-            onScroll={scrollHandler}
-        >
-
-            
-
-             
+            onScroll={scrollHandler}>
 
             {textWidth >  widthLimit ?
                 
@@ -90,7 +82,6 @@ export function SlideShow ({ text, widthLimit = width, slideInterval = 4000 }: S
                 </TextSlideShow> 
                 
             }
-
             
         </Container>
     );
