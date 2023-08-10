@@ -79,7 +79,7 @@ export function Home() {
         <Navigator
             screenOptions={{
                 headerTintColor: theme.colors.text,
-                drawerStyle: { width: RFValue(Platform.OS === 'ios' ? 240 : 250) },
+                drawerStyle: { width: RFValue(Platform.OS === 'ios' ? 240 : 260) },
             }}
             drawerContent={ props =>
                 <CustomDrawerContent {...props} />

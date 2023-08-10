@@ -33,7 +33,7 @@ export const ImageLogo = styled(LogoSvg).attrs({
     width: RFValue(80),
     height: RFValue(60)
 })`
-    margin-top: ${RFValue(Platform.OS === 'ios' ? 70 : 30)}px;
+    margin-top: ${RFValue(Platform.OS === 'ios' ? 50 : 30)}px;
 `;
 
 export const MainContainer = styled.View`
