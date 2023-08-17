@@ -2,9 +2,10 @@
   "expo": {
     "name": "Gabadi",
     "slug": "appgabadi",
+    "scheme": "appgabadi",
     "currentFullName": "@lfelipelopes/appgabadi",
     "originalFullName": "@lfelipelopes/appgabadi",
-    "version": "1.0.0",
+    "version": "1.0.3",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -20,6 +21,7 @@
       "supportsTablet": false,
       "bundleIdentifier": "com.appgabadi",
       "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false,
         "UIBackgroundModes": [
           "audio"
         ]
