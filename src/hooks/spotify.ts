@@ -1,16 +1,12 @@
 import axios from "axios";
 import { encode } from 'base-64';
 
-const { SPOTIFY_CLIENT_ID } = process.env;
-const { SPOTIFY_CLIENT_SECRET } = process.env;
-const { SPOTIFY_ENDPOINT } = process.env;
-
 
 export const authenticateWithSpotify = async () => {
 
-    const clientID = `${SPOTIFY_CLIENT_ID}`;
-    const clientSecret = `${SPOTIFY_CLIENT_SECRET}`;
-    const authEndpoint = `${SPOTIFY_ENDPOINT!}`;
+    const clientID = `f3fe9eec7c5f45989378b50dc6449457`;
+    const clientSecret = `bcffa46da71a42eb8816c54cf19feef0`;
+    const authEndpoint = `https://accounts.spotify.com/api/token`;
 
     try {
         const response = await axios.post(authEndpoint, 'grant_type=client_credentials', {
@@ -24,9 +20,10 @@ export const authenticateWithSpotify = async () => {
 
         return access_token;
 
-    } catch (error) {
+    } catch (error:any) {
         console.log('error authenticateWithSpotify', error)
-        throw new Error(error.message);
+        const messageError = `error authenticateWithSpotify - ${error.message}`;
+        throw new Error(messageError);
     }
 }
 
@@ -54,9 +51,10 @@ export const getArtistInfo = async (artistName:string) => {
 
         return artistInfo;
 
-    } catch (error) {
+    } catch (error: any) {
         console.log('error getArtistInfo', error)
-        throw new Error(error.message);
+        const messageError = `error getArtistInfo - ${error.message}`;
+        throw new Error(messageError);
     }
     
     

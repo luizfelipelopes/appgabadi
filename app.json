@@ -1,17 +1,18 @@
 {
   "expo": {
-    "name": "appgabadi",
+    "name": "Gabadi",
     "slug": "appgabadi",
+    "scheme": "appgabadi",
     "currentFullName": "@lfelipelopes/appgabadi",
     "originalFullName": "@lfelipelopes/appgabadi",
-    "version": "1.0.0",
+    "version": "1.0.4",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#0D0D0D"
     },
     "assetBundlePatterns": [
       "**/*"
@@ -20,6 +21,7 @@
       "supportsTablet": false,
       "bundleIdentifier": "com.appgabadi",
       "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false,
         "UIBackgroundModes": [
           "audio"
         ]
