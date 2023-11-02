@@ -16,8 +16,8 @@ App created to reproduce the web radio of a Christian church, making it possible
 
 ### [+] Links
 Gabadi App is available for IOS and Android.
-- Ios: <a href="https://KasRoudra.github.io/repository-readme-generator/">App Store</a>
-- Android: <a href="https://KasRoudra.github.io/repository-readme-generator/">Google Play</a>
+- Ios: <a href="https://apps.apple.com/br/app/gabadi/id6459659036">App Store</a>
+- Android: <a href="https://play.google.com/store/apps/details?id=com.appgabadi">Google Play</a>
 
 ### [+] Preview
 ![App Gabadi](assets/preview-appgabadi.gif)
