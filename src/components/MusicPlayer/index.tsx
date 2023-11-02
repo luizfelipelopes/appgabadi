@@ -1,8 +1,12 @@
 import { useEffect, useState } from "react";
-import { Dimensions, Image, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Dimensions, ImageBackground, ScrollView, Text, TouchableOpacity } from "react-native";
+import { RFValue } from "react-native-responsive-fontsize";
 import TrackPlayer, { AppKilledPlaybackBehavior, Capability, Event, State, usePlaybackState, useTrackPlayerEvents } from "react-native-track-player";
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import theme from "../../global/styles/theme";
 import { getArtistInfo } from "../../hooks/spotify";
+import { SlideShow } from "../SlideShow";
+import { Container, ContainerBackground, ContentBackground, ImageBorder, ImageLogo, ImageWrapper, MainContainer, MainWrapper, MusicControlsContainer, SongContentTextArtist, SongContentTextTitle, SongText } from "./styles";
 
 export function MusicPlayer() {
     
@@ -12,6 +16,7 @@ export function MusicPlayer() {
     const [trackTitle, setTrackTitle] = useState('A Potência Gospel de Diamantina');
     const [trackArtist, setTrackArtist] = useState('Gabadi');
     const [trackArtwork, setTrackArtwork] = useState(thumbDefault);
+    const [textWidth, setTextWidth] = useState(0);
     
     const playBackState = usePlaybackState();
 
@@ -146,8 +151,6 @@ export function MusicPlayer() {
         return artistUrl;
     }
 
-
-
     const gettrackdata = async () => {
 
         try {
@@ -173,7 +176,6 @@ export function MusicPlayer() {
             || (playBackState == State.Ready)
             || (playBackState == 'idle')
             ) {
-                    // await TrackPlayer.play();
                     await TrackPlayer.reset();
                     await configPlayer();
                 } else {
@@ -181,18 +183,6 @@ export function MusicPlayer() {
                 }
             }
         };
-
-    const nexttrack = async () => {
-        await TrackPlayer.skipToNext();
-        gettrackdata();
-    };
-
-    const previoustrack = async () => {
-        if (trackIndex > 0) {
-            await TrackPlayer.skipToPrevious();
-            gettrackdata();
-        };
-    };
 
     
     useEffect(() => {
@@ -209,104 +199,75 @@ export function MusicPlayer() {
     }, []);
 
 
+    const marginSize = 40;
+    const { width } = Dimensions.get('window');
+
+    const handleTextLayout = (event) => {
+        
+        const textLayout = event.nativeEvent.layout;
+        setTextWidth(textLayout.width);
+
+    };
+
     return (
 
-        <SafeAreaView style={styles.container}>
-            <View style={styles.mainContainer}>
-            
-            <View style={styles.mainWrapper}>
-                <Image source={ {uri: trackArtwork } } style={styles.imageWrapper} /> 
-            </View>
-            
-            <View style={styles.songText}>
-                <Text style={[styles.songContent, styles.songTitle]}>{trackTitle}</Text>
-                <Text style={[styles.songContent, styles.songArtist]}>{trackArtist}</Text>
-            </View>
-
-            <View style={styles.musicControlsContainer}>
-            
-                <TouchableOpacity onPress={() => togglePlayBack(playBackState) }>
-                <Ionicons
-                    name={
-                    playBackState === State.Playing
-                        ? 'ios-pause-circle'
-                        : playBackState === State.Connecting
-                        ? 'ios-caret-down-circle'
-                        : 'ios-play-circle'
-                    }
-                    size={75}
-                    color="#FFD369"
-                />
-                </TouchableOpacity>
+        <Container>
+            <ContainerBackground>
                 
-            </View>
-            </View>
-      </SafeAreaView>
+                <ImageBackground 
+                    source={ require('../../assets/background.jpeg') } 
+                    resizeMode={"cover"} >
+                    <ContentBackground>        
+                        <ImageLogo />
+                    </ContentBackground>      
+                </ImageBackground>  
+            </ContainerBackground>
+
+            <MainContainer>
+                
+                <MainWrapper width={width}>
+                    <ImageBorder>
+                        <ImageWrapper source={ {uri: trackArtwork } } /> 
+                    </ImageBorder>
+                </MainWrapper>
+                
+                <SongText>
+                
+                    { textWidth >= width - marginSize
+                    ? <SlideShow text={trackTitle} widthLimit={width} />
+                    : <SongContentTextTitle>{trackTitle}</SongContentTextTitle>}
+                    
+                    <SongContentTextArtist>{trackArtist}</SongContentTextArtist>
+                </SongText>
+
+                <MusicControlsContainer>
+                
+                    <TouchableOpacity onPress={() => togglePlayBack(playBackState) }>
+
+                    <Ionicons
+                        name={
+                        playBackState === State.Playing
+                            ? 'ios-pause-circle'
+                            : playBackState === State.Connecting
+                            ? 'ios-caret-down-circle'
+                            : 'ios-play-circle'
+                        }
+                        size={RFValue(75)}
+                        color={theme.colors.primary}
+                        
+                    />
+                    </TouchableOpacity>
+                    
+                </MusicControlsContainer>
+
+            </MainContainer>
+
+            <ScrollView style={{ position: 'absolute', bottom: 0 }} horizontal>
+                <Text onLayout={handleTextLayout}>{trackTitle}</Text>
+            </ScrollView>            
+            
+      </Container>
 
     );
 }
 
-const {width, height} = Dimensions.get('window');
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#222831',
-  },
-  mainContainer: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  mainWrapper: {
-    width: width,
-    height: width,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  imageWrapper: {
-    alignSelf: "center",
-    width: '80%',
-    height: '80%',
-    borderRadius: 15,
-  },
-  songText: {
-    marginTop:2,
-    height: 70
-  },
-  songContent: {
-    textAlign: 'center',
-    color: '#EEEEEE',
-  },
-  songTitle: {
-    fontSize: 18,
-    fontWeight: '600',
-  },
-  songArtist: {
-    fontSize: 16,
-    fontWeight: '300',
-  },
-  progressBar: {
-    alignSelf: "stretch",
-    marginTop: 40,
-    marginLeft:5,
-    marginRight:5
-  },
-  progressLevelDuraiton: {
-    width: width,
-    padding: 5,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-  progressLabelText: {
-    color: '#FFF',
-  },
-  musicControlsContainer: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: 20,
-    marginBottom: 20,
-    width: '60%',
-  },
-});
