@@ -16,10 +16,11 @@ App created to reproduce the web radio of a Christian church, making it possible
 
 ### [+] Links
 Gabadi App is available for IOS and Android.
-- Ios: <a href="https://KasRoudra.github.io/repository-readme-generator/">App Store</a>
-- Android: <a href="https://KasRoudra.github.io/repository-readme-generator/">Google Play</a>
+- Ios: <a target="_blank" href="https://apps.apple.com/br/app/gabadi/id6459659036">App Store</a>
+- Android: <a target="_blank" href="https://play.google.com/store/apps/details?id=com.appgabadi">Google Play</a>
 
-
+### [+] Preview
+![App Gabadi](assets/preview-appgabadi.gif)
 ### [+] Instructions
 
 - install dependencies: ```npm install```;
@@ -32,13 +33,6 @@ Gabadi App is available for IOS and Android.
 - Open the app after installation
 - Click in the server available
 - Enjoy!
-
-### [+] Preview
-
-![App Gabadi](./assets/gif-preview.mp4)
-
-### [+] Credits 
-<a href="https://github.com/arturssmirnovs/github-profile-readme-generator">Arturssmirnovs</a>
 
 ### [+] Find me on 
  <a href="mailto:lfelipelopesti@gmail.com" target="_blank"><img src="https://img.shields.io/badge/Email-lfelipelopesti@gmail.com-blue?style=for-the-badge&logo=gmail"></a>
