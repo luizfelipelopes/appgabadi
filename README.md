@@ -34,11 +34,9 @@ Gabadi App is available for IOS and Android.
 - Enjoy!
 
 ### [+] Preview
+<video title="App Gabadi" alt="App Gabadi" src='assets/gif-preview.mp4' width=180></video>
 
-![App Gabadi](./assets/gif-preview.mp4)
-
-### [+] Credits 
-<a href="https://github.com/arturssmirnovs/github-profile-readme-generator">Arturssmirnovs</a>
+<!-- ![App Gabadi](assets/gif-preview.mp4) -->
 
 ### [+] Find me on 
  <a href="mailto:lfelipelopesti@gmail.com" target="_blank"><img src="https://img.shields.io/badge/Email-lfelipelopesti@gmail.com-blue?style=for-the-badge&logo=gmail"></a>
