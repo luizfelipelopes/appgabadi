@@ -2,31 +2,19 @@ import { MusicPlayer } from "../../components/MusicPlayer";
 import { Container, ContainerLinks, ContainerLogo, Photo, SocialMediaContainer } from "./styles";
 import { createDrawerNavigator, DrawerContentScrollView, DrawerItem } from "@react-navigation/drawer";
 import { useNavigation } from "@react-navigation/native";
-import { Alert, Linking, Platform } from "react-native";
+import { Platform } from "react-native";
 import { About } from "../About";
 import { Locations } from "../Locations";
 import theme from "../../global/styles/theme";
 import { RFValue } from "react-native-responsive-fontsize";
 import { AntDesign, FontAwesome5 } from "@expo/vector-icons";
-import { gabadiYoutube, linkPoliciesPrivacity, pibDiamantinaInsta, whatsAppUrl } from "../../utils/utils";
+import { gabadiYoutube, handlePress, linkPoliciesPrivacity, pibDiamantinaInsta, whatsAppUrl } from "../../utils/utils";
 
 const { Navigator, Screen } = createDrawerNavigator();
 
 export function Home() {
 
     const navigation = useNavigation();
-
-    const handlePress = ( async (link: string) => {
-    
-        const supported = await Linking.canOpenURL(link);
-    
-        if(supported) {
-            await Linking.openURL(link);
-        } else {
-            Alert.alert(`Não é possível abrir este link: ${link}`);
-        }
-    
-      })
 
     const seeMoreOptions = (url: any, param?: any) => {
 
