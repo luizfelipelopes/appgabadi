@@ -11,12 +11,14 @@ export const whatsAppUrl = `https://wa.me/${whatsAppFone}/`;
 
 export const handlePress = ( async (link: string) => {
     
-    const supported = await Linking.canOpenURL(link);
+    try {
+        const supported = await Linking.openURL(link);
 
-    if(supported) {
-        await Linking.openURL(link);
-    } else {
-        Alert.alert(`Não é possível abrir este link: ${link}`);
+        if(!supported) {
+            throw new Error(`Não é possível abrir este link: ${link}`);
+        }
+    } catch (error:any) {
+        Alert.alert(error?.message);
     }
 
   })

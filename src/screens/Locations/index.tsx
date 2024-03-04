@@ -1,22 +1,10 @@
 import { AntDesign, FontAwesome5 } from "@expo/vector-icons";
-import { Alert, ImageBackground, Linking } from "react-native";
+import { ImageBackground } from "react-native";
 import { RFValue } from "react-native-responsive-fontsize";
-import { gabadiYoutube, pibDiamantinaInsta, radioGabadiOnlineInsta, whatsAppUrl } from "../../utils/utils";
+import { gabadiYoutube, handlePress, pibDiamantinaInsta, radioGabadiOnlineInsta, whatsAppUrl } from "../../utils/utils";
 import { Container, ContainerBackground, ContainerLinks, ContainerText, ContentBackground, ImageLogo, ItemLink, TitleLocations } from "./styles";
 
 export function Locations() {
-
-    const handlePress = ( async (link: string) => {
-    
-        const supported = await Linking.canOpenURL(link);
-    
-        if(supported) {
-            await Linking.openURL(link);
-        } else {
-            Alert.alert(`Não é possível abrir este link: ${link}`);
-        }
-    
-      })
 
     return(
         <Container>
