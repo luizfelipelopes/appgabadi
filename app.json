@@ -5,7 +5,7 @@
     "scheme": "appgabadi",
     "currentFullName": "@lfelipelopes/appgabadi",
     "originalFullName": "@lfelipelopes/appgabadi",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -33,6 +33,7 @@
         "backgroundColor": "#ffffff",
         "package": "com.appgabadi"
       },
+      "versionCode": 2,
       "package": "com.appgabadi"
     },
     "web": {

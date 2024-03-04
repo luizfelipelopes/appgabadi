@@ -8,7 +8,7 @@ import { Locations } from "../Locations";
 import theme from "../../global/styles/theme";
 import { RFValue } from "react-native-responsive-fontsize";
 import { AntDesign, FontAwesome5 } from "@expo/vector-icons";
-import { gabadiYoutube, handlePress, linkPoliciesPrivacity, pibDiamantinaInsta, whatsAppUrl } from "../../utils/utils";
+import { gabadiYoutube, handlePress, linkPoliciesPrivacity, radioGabadiOnlineInsta, whatsAppUrl } from "../../utils/utils";
 
 const { Navigator, Screen } = createDrawerNavigator();
 
@@ -45,7 +45,7 @@ export function Home() {
                         <DrawerItem labelStyle={{ fontSize: RFValue(16), color: theme.colors.text}} label={"Políticas de Privacidade"} onPress={() => handlePress(linkPoliciesPrivacity)} />
 
                         <SocialMediaContainer>
-                            <ContainerLinks onPress={() => handlePress(pibDiamantinaInsta)}>
+                            <ContainerLinks onPress={() => handlePress(radioGabadiOnlineInsta)}>
                                 <AntDesign name="instagram" size={RFValue(34)} color={theme.colors.text} />
                             </ContainerLinks>
                             <ContainerLinks onPress={() => handlePress(gabadiYoutube)}>
