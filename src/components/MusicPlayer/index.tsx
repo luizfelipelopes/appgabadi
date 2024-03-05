@@ -11,7 +11,7 @@ import { Container, ContainerBackground, ContentBackground, ImageBorder, ImageLo
 export function MusicPlayer() {
     
     const audioUrl = 'http://paineldj5.com.br:8076/stream';
-    const thumbDefault = 'https://play-lh.googleusercontent.com/MndpDp084TBi-dRBomUQ2zoxL-DYRW1di26yn_L_vZB2z82aYdJAyPIWk8Bn2FW4Y_qR';
+    const thumbDefault = 'https://raw.githubusercontent.com/luizfelipelopes/appgabadi/homologation/src/assets/logo-gabadi-online.png';
     const [trackIndex, setTrackIndex] = useState(0);
     const [trackTitle, setTrackTitle] = useState('A Potência Gospel de Diamantina');
     const [trackArtist, setTrackArtist] = useState('Gabadi');
