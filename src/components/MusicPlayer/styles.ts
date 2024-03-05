@@ -2,7 +2,7 @@ import { Image, Platform, SafeAreaView } from "react-native";
 import { RFValue } from "react-native-responsive-fontsize";
 import { styled } from "styled-components/native";
 
-import LogoSvg from '../../assets/logo.svg';
+import LogoSvg from '../../assets/logo-gabadi-online-editado.svg';
 
 interface DimensionsProps {
     width: string;
@@ -30,10 +30,10 @@ export const ContentBackground = styled.View`
 `;
 
 export const ImageLogo = styled(LogoSvg).attrs({
-    width: RFValue(80),
-    height: RFValue(60)
+    width: RFValue(90),
+    height: RFValue(70)
 })`
-    margin-top: ${RFValue(Platform.OS === 'ios' ? 50 : 30)}px;
+    margin-top: ${RFValue(Platform.OS === 'ios' ? 50 : 20)}px;
 `;
 
 export const MainContainer = styled.View`

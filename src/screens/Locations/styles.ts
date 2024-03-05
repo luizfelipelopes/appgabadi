@@ -2,7 +2,7 @@ import { Platform } from "react-native";
 import { RFValue } from "react-native-responsive-fontsize";
 import { styled } from "styled-components/native";
 
-import LogoSvg from '../../assets/logo.svg';
+import LogoSvg from '../../assets/logo-gabadi-online-editado.svg';
 
 export const Container = styled.View`
     flex: 1;
